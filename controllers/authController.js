@@ -1,4 +1,3 @@
-// controllers/authController.js
 
 import {
   findUserByEmail,

@@ -20,7 +20,6 @@ const prisma = new PrismaClient();
 export const updateUserProfileDp = async (req, res) => {
   try {
     const userId = req.user.id;
-      console.log(userId);
     const { avatar, username } = req.body;
 
     if (!userId) {
@@ -79,7 +78,7 @@ export const registerUser = async (req, res) => {
     const token = generateToken({
       id: newUser.id,
       email: newUser.email,
-      username: newUser.name
+      username: newUser.name, avatar: newUser.avatar
     });
 
     return res.status(201).json({
@@ -125,7 +124,6 @@ export const loginUser = async (req, res) => {
 // ✅ Fetch User Profile
 export const fetchUserProfile = async (req, res) => {
   const userId = req.user.id;
-    console.log(userId);
 
 
   try {

@@ -20,6 +20,7 @@ const prisma = new PrismaClient();
 export const updateUserProfileDp = async (req, res) => {
   try {
     const userId = req.user.id;
+      console.log(userId);
     const { avatar, username } = req.body;
 
     if (!userId) {
@@ -124,6 +125,8 @@ export const loginUser = async (req, res) => {
 // ✅ Fetch User Profile
 export const fetchUserProfile = async (req, res) => {
   const userId = req.user.id;
+    console.log(userId);
+
 
   try {
     const user = await prisma.user.findUnique({where:{id: userId}});
@@ -142,6 +145,8 @@ export const fetchUserProfile = async (req, res) => {
 // ✅ Delete User Account
 export const deleteAccount = async (req, res) => {
   const userId = req.user.id;
+  console.log(userId);
+  
 
   try {
     if (!userId) {

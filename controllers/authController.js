@@ -41,6 +41,7 @@ export const updateUserProfileDp = async (req, res) => {
       username: updatedUserDp.name,
       avatar: updatedUserDp.avatar
     });
+    console.log(newToken)
 
     return res.status(200).json({ message: 'Profile updated successfully', token: newToken });
   } catch (error) {

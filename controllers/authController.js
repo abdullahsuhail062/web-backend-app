@@ -38,12 +38,12 @@ export const updateUserProfileDp = async (req, res) => {
 
     const newToken = generateToken({
       id: updatedUserDp.id,
-      username: updatedUserDp.name,
-      avatar: updatedUserDp.avatar
+      username: updatedUserDp.name
     });
-    console.log(newToken)
 
-    return res.status(200).json({ message: 'Profile updated successfully', token: newToken });
+    const avatarImage = updatedUserDp.avatar
+
+    return res.status(200).json({ message: 'Profile updated successfully', token: newToken, avatar :avatarImage });
   } catch (error) {
     console.error('Error updating profile:', error);
     res.status(500).json({ error: 'Internal Server Error' });

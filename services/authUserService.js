@@ -41,6 +41,14 @@ export async function updateUserProfileData(userId, { username, avatar }) {
   return updatedUser;
 }
 
+export async function fetchUserProfile(userId){
+  const user = await prisma.user.findUnique({
+    where: {id: userId},
+    select: {email: true}
+  })
+  return user
+}
+
 
 
 export async function updateUserProfileDpData(userId, { avatar, username }) {

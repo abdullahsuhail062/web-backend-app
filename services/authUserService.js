@@ -29,8 +29,9 @@ export async function findUserByUsername(username) {
 
 
 export async function updateUserProfileData(userId, { username, avatar }) {
+  const id = Number(userId)
   const updatedUser = await prisma.user.update({
-    where: { id: userId },
+    where: { id: id },
     data: {
       name: username,  // ✅ Use the correct Prisma field name
       avatar: avatar
@@ -42,8 +43,10 @@ export async function updateUserProfileData(userId, { username, avatar }) {
 }
 
 export async function fetchUserProfile(userId){
+    const id = Number(userId)
+
   const user = await prisma.user.findUnique({
-    where: {id: userId},
+    where: {id: id},
     select: {email: true}
   })
   return user
@@ -82,9 +85,10 @@ export async function updateUserProfileDpData(userId, { avatar, username }) {
 
 
 export  async function deleteAccountById(userId) {
+    const id = Number(userId)
     const deletedUser = await prisma.user.delete({
       where: {
-        id: userId,
+        id: id,
       },
     });
 

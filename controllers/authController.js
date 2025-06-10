@@ -145,14 +145,7 @@ export const fetchUserProfile = async (req, res) => {
   const userId = req.user.id;
 
   try {
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-      select: {
-        email: true,
-        name: true,
-        avatar: true,
-      },
-    });
+    const user = await prisma.user.findUnique(userId);
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });

@@ -47,7 +47,7 @@ export async function fetchUserProfile(userId){
 
   const user = await prisma.user.findUnique({
     where: {id: id},
-    select: {email: true}
+    select: {email: true, avatar: true}
   })
   return user
 }

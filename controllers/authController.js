@@ -42,7 +42,6 @@ export const updateUserProfileDp = async (req, res) => {
     });
 
     const avatarImage = updatedUserDp.avatar
-    console.log(avatarImage)
 
     return res.status(200).json({ message: 'Profile updated successfully', token: newToken, avatar :avatarImage });
   } catch (error) {

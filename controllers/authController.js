@@ -144,13 +144,23 @@ export const fetchUserProfile = async (req, res) => {
 // ✅ Delete User Account
 export const deleteAccount = async (req, res) => {
   const userId = req.user.id;
-  console.log(userId);
+  const {password} =req.body.password
   
 
   try {
     if (!userId) {
       return res.status(400).json({ error: 'User ID not provided.' });
     }
+    if (!password) {
+      return res.status(400).json({ error: 'User Password not provided.' });
+    }
+      const user = await prisma.user.findUnique({where: {id: userId}})
+        const isValid = await bcrypt.compare(password, user.password);
+         if (!isValid) {
+    return res.status(401).json({ error: 'Incorrect password' });
+  }
+
+
 
     await deleteAccountById(userId);
 

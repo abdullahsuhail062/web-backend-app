@@ -144,7 +144,9 @@ export const fetchUserProfile = async (req, res) => {
 // ✅ Delete User Account
 export const deleteAccount = async (req, res) => {
   const userId = req.user.id;
-  const {password} =req.body.password
+  const {password} =req.body
+  console.log(password);
+  
   
 
   try {
